@@ -10,11 +10,13 @@ function getRandomIntInclusive(min, max) {
      //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 }
 
+let mainsection = document.getElementById("special");
 
 //Adding seatle location
 
 
 const seattle = {
+location:'Seatle',
 minHourlyCust: 23,
 maxHourlyCust: 65,
 avgCookPerOneCust: 6.3,
@@ -29,7 +31,7 @@ randomHourlyCust:function(){
     for (let i=0; i<=13; i++){
         
 this.randHourlyCust.push(getRandomIntInclusive(this.minHourlyCust,this.maxHourlyCust));
- this.listRandcustomer_Hour[i]= (`${this.workingHours[i]} : ${this.randHourlyCust[i]}`);
+ //this.listRandcustomer_Hour[i]= (`${this.workingHours[i]} : ${this.randHourlyCust[i]}`);
  //console.log(this.listRandcustomer_Hour[i]);
     }
 
@@ -44,7 +46,9 @@ cookiesPerHour:function(){
     };
 },
 creatingList: function(){
-let mainsection = document.getElementById("special");
+let h2 = document.createElement('h2');
+mainsection.appendChild(h2);
+h2.textContent= this.location;
 let unorderl = document.createElement("ul");
 mainsection.appendChild(unorderl);
 let li = null;
@@ -74,6 +78,7 @@ seattle.creatingList();
 //Adding Tokyo location
   
 const Tokyo = {
+    location:'Tokyo',
     minHourlyCust: 3,
     maxHourlyCust: 24,
     avgCookPerOneCust: 1.2,
@@ -103,11 +108,13 @@ const Tokyo = {
         };
     },
     creatingList: function(){
-    let mainsection = document.getElementById("special");
-    let unorderl = document.createElement("ul");
-    mainsection.appendChild(unorderl);
-    let li = null;
-    let totalnum = 0;
+        let h2 = document.createElement('h2');
+        mainsection.appendChild(h2);
+        h2.textContent= this.location;
+        let unorderl = document.createElement("ul");
+        mainsection.appendChild(unorderl);
+        let li = null;
+        let totalnum = 0;
     
     for (let x =0 ; x < this.workingHours.length; x++){
      li = document.createElement('li');
@@ -133,6 +140,7 @@ const Tokyo = {
     //Adding Dubai location
 
     const Dubai = {
+        location:'Dubai',
         minHourlyCust: 11,
         maxHourlyCust: 38,
         avgCookPerOneCust: 3.7,
@@ -162,11 +170,13 @@ const Tokyo = {
             };
         },
         creatingList: function(){
-        let mainsection = document.getElementById("special");
-        let unorderl = document.createElement("ul");
-        mainsection.appendChild(unorderl);
-        let li = null;
-        let totalnum = 0;
+            let h2 = document.createElement('h2');
+            mainsection.appendChild(h2);
+            h2.textContent= this.location;
+            let unorderl = document.createElement("ul");
+            mainsection.appendChild(unorderl);
+            let li = null;
+            let totalnum = 0;
         
         for (let x =0 ; x < this.workingHours.length; x++){
          li = document.createElement('li');
@@ -190,6 +200,7 @@ const Tokyo = {
 
         //Adding Paris location
         const Paris = {
+            location:'Paris',
             minHourlyCust: 20,
             maxHourlyCust: 38,
             avgCookPerOneCust: 2.3,
@@ -220,11 +231,13 @@ const Tokyo = {
                 };
             },
             creatingList: function(){
-            let mainsection = document.getElementById("special");
-            let unorderl = document.createElement("ul");
-            mainsection.appendChild(unorderl);
-            let li = null;
-            let totalnum = 0;
+                let h2 = document.createElement('h2');
+                mainsection.appendChild(h2);
+                h2.textContent= this.location;
+                let unorderl = document.createElement("ul");
+                mainsection.appendChild(unorderl);
+                let li = null;
+                let totalnum = 0;
             
             for (let x =0 ; x < this.workingHours.length; x++){
              li = document.createElement('li');
@@ -251,6 +264,7 @@ const Tokyo = {
             //Adding lima location
 
             const Lima = {
+                location:'Lima',
                 minHourlyCust: 2,
                 maxHourlyCust: 16,
                 avgCookPerOneCust: 4.6,
@@ -281,11 +295,13 @@ const Tokyo = {
                     };
                 },
                 creatingList: function(){
-                let mainsection = document.getElementById("special");
-                let unorderl = document.createElement("ul");
-                mainsection.appendChild(unorderl);
-                let li = null;
-                let totalnum = 0;
+                    let h2 = document.createElement('h2');
+                    mainsection.appendChild(h2);
+                    h2.textContent= this.location;
+                    let unorderl = document.createElement("ul");
+                    mainsection.appendChild(unorderl);
+                    let li = null;
+                    let totalnum = 0;
                 
                 for (let x =0 ; x < this.workingHours.length; x++){
                  li = document.createElement('li');
