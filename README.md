@@ -1,7 +1,7 @@
 
 
 # Project Name :
-# cookie-stand
+# Salmon-cookies project
 
 # Author:
 # Haya Balasmeh
