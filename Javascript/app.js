@@ -123,12 +123,12 @@ function tablefooter(){
     let tableheademp2= document.createElement('td');
     tablefootrow.appendChild(tableheademp2);
     tableheademp2.textContent = ' Totals | ';
-    for(let i=0; i< workingHours.length;i++){
+    for(let y=0; y< workingHours.length;y++){
     let tablefooterdata= document.createElement('td');
     tablefootrow.appendChild(tablefooterdata);
     for(let i =0; i <arrofObjects.length; i++){
-    one_hour_total = one_hour_total + arrofObjects[i].cookPerHour[i];
-    console.log(arrofObjects[i].cookPerHour[i]);
+    one_hour_total = one_hour_total + arrofObjects[i].cookPerHour[y];
+    console.log(arrofObjects[i].cookPerHour[y]);
     }
     tablefooterdata.textContent = one_hour_total;
     console.log(one_hour_total);
