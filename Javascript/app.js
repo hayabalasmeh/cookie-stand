@@ -1,6 +1,6 @@
 'use strict'
 
-//Hello to my lab 7 code , the side notes are just a refrence for me when I get back later to the codem as it was huge brainstorming lab 
+//Hello to my lab 7 code , the side notes are just a refrence for me when I get back later to the code as it was huge brainstorming lab 
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -97,7 +97,7 @@ Location.prototype.creatingTable = function(){
     table.appendChild(tableRow2);
     let tableRowMain = document.createElement('td')
     tableRow2.appendChild(tableRowMain);
-    tableRowMain.textContent= `${this.locationName} |`;   
+    tableRowMain.textContent= `${this.locationName} `;   
     for (let i=0; i < workingHours.length; i++){
         
         let tableData = document.createElement('td');
@@ -126,7 +126,7 @@ function tableFooter(){
     table.appendChild(tableFootRow);
     let tableHeadSum= document.createElement('td');
     tableFootRow.appendChild(tableHeadSum);
-    tableHeadSum.textContent = ' Totals | ';
+    tableHeadSum.textContent = ' Totals ';
     for(let y=0; y < workingHours.length;y++){
     let tableFooterData= document.createElement('td');
     tableFootRow.appendChild(tableFooterData);
@@ -145,7 +145,6 @@ tableFootRow.appendChild(tableLastCell);
 tableLastCell.textContent = allHourTotl;
 }
 tableFooter();
-
 
 
 //console.log(tablefooter);

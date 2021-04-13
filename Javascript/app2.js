@@ -1,4 +1,11 @@
-// const seattle = {
+
+
+
+
+// this page is just for experimentation purposes only 
+
+
+//const seattle = {
 //     location:'Seatle',
 //     minHourlyCust: 23,
 //     maxHourlyCust: 65,
