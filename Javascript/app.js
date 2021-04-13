@@ -1,5 +1,5 @@
 'use strict'
-let arra= [1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+
 
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
@@ -84,10 +84,14 @@ function tablehead (){
     tablehead1.textContent = `| ${workingHours[i]} |`;
     
     }
+    let tableheadtot=document.createElement('th');
+    tablerow1.appendChild(tableheadtot);
+    tableheadtot.textContent = ' Daily Location Total';
 }
 tablehead();
 
 Location.prototype.creatingTable = function(){
+    let totalLocat = 0;
     let tablerow2= document.createElement('tr');
     table.appendChild(tablerow2);
     let tablerowmain = document.createElement('td')
@@ -97,30 +101,48 @@ Location.prototype.creatingTable = function(){
         
         let tabledata = document.createElement('td');
         tablerow2.appendChild(tabledata);
-        tabledata.textContent = workingHours[i];
+        tabledata.textContent = this.cookPerHour[i];
+        totalLocat = totalLocat + this.cookPerHour[i];
     }
+    let table_total_loc = document.createElement('td');
+    tablerow2.appendChild(table_total_loc);
+    table_total_loc.textContent = totalLocat;
 };
 for(let i=0; i< arrofObjects.length; i++){
     arrofObjects[i].creatingTable();}
 
+    Location.prototype.adding_one_our = function(){
+    
+    }
+
 function tablefooter(){
+    let one_hour_total = 0;
+    let all_hour_totl = 0;
     let tablefootrow = document.createElement('tr');
     table.appendChild(tablefootrow);
     let tableheademp2= document.createElement('td');
     tablefootrow.appendChild(tableheademp2);
-    tableheademp2.textContent = ' ';
+    tableheademp2.textContent = ' Totals | ';
     for(let i=0; i< workingHours.length;i++){
     let tablefooterdata= document.createElement('td');
     tablefootrow.appendChild(tablefooterdata);
-    tablefooterdata.textContent = `| ${arra[i]} |`;
-
+    for(let i =0; i <arrofObjects.length; i++){
+    one_hour_total = one_hour_total + arrofObjects[i].cookPerHour[i];
+    console.log(arrofObjects[i].cookPerHour[i]);
+    }
+    tablefooterdata.textContent = one_hour_total;
+    console.log(one_hour_total);
+    all_hour_totl = all_hour_totl+ one_hour_total
 }
+let tablelastcell = document.createElement('td');
+tablefootrow.appendChild(tablelastcell);
+tablelastcell.textContent = all_hour_totl;
 }
 tablefooter();
 
 
 
-console.log(tablefooter);
+//console.log(tablefooter);
 
 
 // Location.prototype.creatingList = function(){
