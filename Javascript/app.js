@@ -144,8 +144,7 @@ let tableLastCell = document.createElement('td');
 tableFootRow.appendChild(tableLastCell);
 tableLastCell.textContent = allHourTotl;
 }
-tableFooter();
-
+tableFooter(); 
 
 //console.log(tablefooter);
 
