@@ -1,5 +1,5 @@
 'use strict'
-
+let arra= [1,2,3,4,5,6,7,8,9,10,11,12,13,14];
 
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
@@ -9,297 +9,170 @@ function getRandomIntInclusive(min, max) {
 }
 
 let mainsection = document.getElementById("special");
+let table = document.createElement('table');
+mainsection.appendChild(table);
+
+let workingHours = [' at 6am ',' at 7am ',' at 8am ',' at 9am ',' at 10am ',' at 11am ',' at 12pm ',' at 1pm ',' at 2pm ',' at 3pm ',' at 4pm ', ' at 5pm ', ' at 6pm ', ' at 7pm '];
 
 
-//Adding seatle location
+// Constructor Function
+let arrofObjects= [];
 
+function Location (locationName,minHourlyCust,maxHourlyCus,avgCookPerOneCust){
+this.locationName = locationName;
+this.minHourlyCust = minHourlyCust;
+this.maxHourlyCus = maxHourlyCus;
+this.avgCookPerOneCust = avgCookPerOneCust;
+this.cookPerHour = [];
+this.randHourlyCust = [];
+this.listCookPurch_Hour = [];
+arrofObjects.push(this);
+console.log(this);
+}
 
-const seattle = {
-location:'Seatle',
-minHourlyCust: 23,
-maxHourlyCust: 65,
-avgCookPerOneCust: 6.3,
-cookPerHour:[],
-randHourlyCust:[],
-workingHours:['at 6am','at 7am','at 8am','at 9am','at 10am','at 11am','at 12pm','at 1pm','at 2pm','at 3pm','at 4pm', 'at 5pm', 'at 6pm', 'at 7pm'],
-listCookPurch_Hour:[],
+// Creating objects
 
-randomHourlyCust:function(){
-   
+let seattle = new Location('Seatle',23,65,6.3);
+let tokyo = new Location('Tokyo',3,24,1.2);
+let dubai = new Location('Dubai',11,38,3.7);
+let paris = new Location('Paris',20,38,2.3);
+let lima = new Location('Lima',2,16,4.6);
+
+//Creating methods
+
+Location.prototype.randomHourlyCust = function(){
+    
     for (let i=0; i<=13; i++){
+         
+        this.randHourlyCust[i]=this.randHourlyCust.push(getRandomIntInclusive(this.minHourlyCust,this.maxHourlyCust));
         
-this.randHourlyCust.push(getRandomIntInclusive(this.minHourlyCust,this.maxHourlyCust));
- 
-    }
-
-},
-cookiesPerHour:function(){
-    for (let i=0; i<=13; i++){
-    this.cookPerHour.push(this.randHourlyCust[i]*Math.round(this.avgCookPerOneCust)); 
-   
-    this.listCookPurch_Hour.push(`${this.workingHours[i]} : ${this.cookPerHour[i]} Cookies`);
-    
-    };
-},
-creatingList: function(){
-let h2 = document.createElement('h2');
-mainsection.appendChild(h2);
-h2.textContent= this.location;
-let unorderl = document.createElement("ul");
-mainsection.appendChild(unorderl);
-let li = null;
-let totalnum = 0;
-
-for (let x =0 ; x < this.workingHours.length; x++){
- li = document.createElement('li');
-unorderl.appendChild(li);
-li.textContent =`${this.listCookPurch_Hour[x]}`;
-totalnum = totalnum + this.cookPerHour[x];
-   
-}
-li = document.createElement('li');
-unorderl.appendChild(li);
-li.textContent = `Total : ${totalnum} Cookies`;
-},
-
-}
-
-
-seattle.randomHourlyCust();
-seattle.cookiesPerHour();
-seattle.creatingList();
-
-
-
-//Adding Tokyo location
-  
-const Tokyo = {
-    location:'Tokyo',
-    minHourlyCust: 3,
-    maxHourlyCust: 24,
-    avgCookPerOneCust: 1.2,
-    cookPerHour:[],
-    randHourlyCust:[],
-    workingHours:['at 6am','at 7am','at 8am','at 9am','at 10am','at 11am','at 12pm','at 1pm','at 2pm','at 3pm','at 4pm', 'at 5pm', 'at 6pm', 'at 7pm'],
-    listCookPurch_Hour:[],
-    
-    randomHourlyCust:function(){
-   
-        for (let i=0; i<=13; i++){
-            
-    this.randHourlyCust.push(getRandomIntInclusive(this.minHourlyCust,this.maxHourlyCust));
-     
+         console.log(this.randHourlyCust[i]);
+          
         }
-    
-    },
-    cookiesPerHour:function(){
-        for (let i=0; i<=13; i++){
+        
+}
+//console.log(seattle.randHourlyCust[1]);
+Location.prototype.cookiesPerHour = function(){
+    for (let i=0; i<=13; i++){
         this.cookPerHour.push(this.randHourlyCust[i]*Math.round(this.avgCookPerOneCust)); 
        
-        this.listCookPurch_Hour.push(`${this.workingHours[i]} : ${this.cookPerHour[i]} Cookies`);
-        }
-    },
-    creatingList: function(){
-        let h2 = document.createElement('h2');
-        mainsection.appendChild(h2);
-        h2.textContent= this.location;
-        let unorderl = document.createElement("ul");
-        mainsection.appendChild(unorderl);
-        let li = null;
-        let totalnum = 0;
+        this.listCookPurch_Hour.push(`${workingHours[i]} : ${this.cookPerHour[i]} Cookies`);
+        
+        };
+}
+//calling methods for all locations 
+for(let i=0; i< arrofObjects.length; i++){
+    arrofObjects[i].randomHourlyCust();
+    arrofObjects[i].cookiesPerHour();
     
-    for (let x =0 ; x < this.workingHours.length; x++){
-     li = document.createElement('li');
-    unorderl.appendChild(li);
-    li.textContent =`${this.listCookPurch_Hour[x]}`;
-    totalnum = totalnum + this.cookPerHour[x];
-       
+    //console.log(arrofObjects[i]);
+}
+
+
+
+
+//adding table headings
+function tablehead (){
+    let tablerow1 = document.createElement('tr');
+    table.appendChild(tablerow1);
+    let tableheademp= document.createElement('th');
+    tablerow1.appendChild(tableheademp);
+    tableheademp.textContent = ' ';
+    for(let i=0; i< workingHours.length;i++){
+    let tablehead1= document.createElement('th');
+    tablerow1.appendChild(tablehead1);
+    tablehead1.textContent = `| ${workingHours[i]} |`;
+    
     }
-    li = document.createElement('li');
-    unorderl.appendChild(li);
-    li.textContent = `Total : ${totalnum} Cookies`;
-    },
-    
+}
+tablehead();
+
+Location.prototype.creatingTable = function(){
+    let tablerow2= document.createElement('tr');
+    table.appendChild(tablerow2);
+    let tablerowmain = document.createElement('td')
+    tablerow2.appendChild(tablerowmain);
+    tablerowmain.textContent= `${this.locationName} |`;   
+    for (let i=0; i < workingHours.length; i++){
+        
+        let tabledata = document.createElement('td');
+        tablerow2.appendChild(tabledata);
+        tabledata.textContent = workingHours[i];
     }
-    
-    
-    Tokyo.randomHourlyCust();
-    Tokyo.cookiesPerHour();
-    Tokyo.creatingList();
+};
+for(let i=0; i< arrofObjects.length; i++){
+    arrofObjects[i].creatingTable();}
+
+function tablefooter(){
+    let tablefootrow = document.createElement('tr');
+    table.appendChild(tablefootrow);
+    let tableheademp2= document.createElement('td');
+    tablefootrow.appendChild(tableheademp2);
+    tableheademp2.textContent = ' ';
+    for(let i=0; i< workingHours.length;i++){
+    let tablefooterdata= document.createElement('td');
+    tablefootrow.appendChild(tablefooterdata);
+    tablefooterdata.textContent = `| ${arra[i]} |`;
+
+}
+}
+tablefooter();
 
 
 
-    //Adding Dubai location
+console.log(tablefooter);
 
-    const Dubai = {
-        location:'Dubai',
-        minHourlyCust: 11,
-        maxHourlyCust: 38,
-        avgCookPerOneCust: 3.7,
-        cookPerHour:[],
-        randHourlyCust:[],
-        workingHours:['at 6am','at 7am','at 8am','at 9am','at 10am','at 11am','at 12pm','at 1pm','at 2pm','at 3pm','at 4pm', 'at 5pm', 'at 6pm', 'at 7pm'],
-        listCookPurch_Hour:[],
-        
-        randomHourlyCust:function(){
+
+// Location.prototype.creatingList = function(){
+// let h2 = document.createElement('h2');
+// mainsection.appendChild(h2);
+// h2.textContent= this.locationName;
+// let unorderl = document.createElement("ul");
+// mainsection.appendChild(unorderl);
+// let li = null;
+// let totalnum = 0;
+
+// for (let x =0 ; x < workingHours.length; x++){
+//  li = document.createElement('li');
+// unorderl.appendChild(li);
+// li.textContent =`${this.listCookPurch_Hour[x]}`;
+// totalnum = totalnum + this.cookPerHour[x];
    
-            for (let i=0; i<=13; i++){
-                
-        this.randHourlyCust.push(getRandomIntInclusive(this.minHourlyCust,this.maxHourlyCust));
-         
-            }
-        
-        },
-        cookiesPerHour:function(){
-            for (let i=0; i<=13; i++){
-            this.cookPerHour.push(this.randHourlyCust[i]*Math.round(this.avgCookPerOneCust)); 
-           
-            this.listCookPurch_Hour.push(`${this.workingHours[i]} : ${this.cookPerHour[i]} Cookies`);
-            
-            };
-        },
-        creatingList: function(){
-            let h2 = document.createElement('h2');
-            mainsection.appendChild(h2);
-            h2.textContent= this.location;
-            let unorderl = document.createElement("ul");
-            mainsection.appendChild(unorderl);
-            let li = null;
-            let totalnum = 0;
-        
-        for (let x =0 ; x < this.workingHours.length; x++){
-         li = document.createElement('li');
-        unorderl.appendChild(li);
-        li.textContent =`${this.listCookPurch_Hour[x]}`;
-        totalnum = totalnum + this.cookPerHour[x];
-           //console.log(li.textContent);
-        }
-        li = document.createElement('li');
-        unorderl.appendChild(li);
-        li.textContent = `Total : ${totalnum} Cookies`;
-        },
-        
-        }
-        
-        
-        Dubai.randomHourlyCust();
-        Dubai.cookiesPerHour();
-        Dubai.creatingList();
+// }
+// li = document.createElement('li');
+// unorderl.appendChild(li);
+// li.textContent = `Total : ${totalnum} Cookies`;
+// }
 
 
-        //Adding Paris location
-        const Paris = {
-            location:'Paris',
-            minHourlyCust: 20,
-            maxHourlyCust: 38,
-            avgCookPerOneCust: 2.3,
-            cookPerHour:[],
-            randHourlyCust:[],
-            workingHours:['at 6am','at 7am','at 8am','at 9am','at 10am','at 11am','at 12pm','at 1pm','at 2pm','at 3pm','at 4pm', 'at 5pm', 'at 6pm', 'at 7pm'],
-            listCookPurch_Hour:[],
-            
-            randomHourlyCust:function(){
-   
-                for (let i=0; i<=13; i++){
-                    
-            this.randHourlyCust.push(getRandomIntInclusive(this.minHourlyCust,this.maxHourlyCust));
-             
-                }
-            
-            },
-            cookiesPerHour:function(){
-                for (let i=0; i<=13; i++){
-                this.cookPerHour.push(this.randHourlyCust[i]*Math.round(this.avgCookPerOneCust)); 
-               
-                this.listCookPurch_Hour.push(`${this.workingHours[i]} : ${this.cookPerHour[i]} Cookies`);
-                
-                };
-            },
-            creatingList: function(){
-                let h2 = document.createElement('h2');
-                mainsection.appendChild(h2);
-                h2.textContent= this.location;
-                let unorderl = document.createElement("ul");
-                mainsection.appendChild(unorderl);
-                let li = null;
-                let totalnum = 0;
-            
-            for (let x =0 ; x < this.workingHours.length; x++){
-             li = document.createElement('li');
-            unorderl.appendChild(li);
-            li.textContent =`${this.listCookPurch_Hour[x]}`;
-            
-            totalnum = totalnum + this.cookPerHour[x];
-               //console.log(li.textContent);
-            }
-            li = document.createElement('li');
-            unorderl.appendChild(li);
-            li.textContent = `Total : ${totalnum} Cookies`;
-            },
-            
-            }
-            
-           
-            Paris.randomHourlyCust();
-            Paris.cookiesPerHour();
-            Paris.creatingList();
-            
+
+//adding table data
+// seattle.randomHourlyCust();
+// seattle.cookiesPerHour();
+// seattle.creatingList();
+// console.log(seattle.randomHourlyCust());
+// console.log(arrofObjects);
+// //Calling Tokyo
+
+// tokyo.randomHourlyCust();
+// tokyo.cookiesPerHour();
+// tokyo.creatingList();
 
 
-            //Adding lima location
+// //Calling Dubai
 
-            const Lima = {
-                location:'Lima',
-                minHourlyCust: 2,
-                maxHourlyCust: 16,
-                avgCookPerOneCust: 4.6,
-                cookPerHour:[],
-                randHourlyCust:[],
-                workingHours:['at 6am','at 7am','at 8am','at 9am','at 10am','at 11am','at 12pm','at 1pm','at 2pm','at 3pm','at 4pm', 'at 5pm', 'at 6pm', 'at 7pm'],
-                listCookPurch_Hour:[],
-                
-                randomHourlyCust:function(){
-   
-                    for (let i=0; i<=13; i++){
-                        
-                this.randHourlyCust.push(getRandomIntInclusive(this.minHourlyCust,this.maxHourlyCust));
-                 
-                    }
-                
-                },
-                cookiesPerHour:function(){
-                    for (let i=0; i<=13; i++){
-                    this.cookPerHour.push(this.randHourlyCust[i]*Math.round(this.avgCookPerOneCust)); 
-                   
-                    this.listCookPurch_Hour.push(`${this.workingHours[i]} : ${this.cookPerHour[i]} Cookies`);
-                    
-                    };
-                },
-                creatingList: function(){
-                    let h2 = document.createElement('h2');
-                    mainsection.appendChild(h2);
-                    h2.textContent= this.location;
-                    let unorderl = document.createElement("ul");
-                    mainsection.appendChild(unorderl);
-                    let li = null;
-                    let totalnum = 0;
-                
-                for (let x =0 ; x < this.workingHours.length; x++){
-                 li = document.createElement('li');
-                unorderl.appendChild(li);
-                li.textContent =`${this.listCookPurch_Hour[x]}`;
-                
-                totalnum = totalnum + this.cookPerHour[x];
-                  
-                }
-                li = document.createElement('li');
-                unorderl.appendChild(li);
-                li.textContent = `Total : ${totalnum} Cookies`;
-                },
-                
-                }
-                
-               
-                Lima.randomHourlyCust();
-                Lima.cookiesPerHour();
-                Lima.creatingList();
+// dubai.randomHourlyCust();
+// dubai.cookiesPerHour();
+// dubai.creatingList();
+
+// //Calling Paris
+
+// paris.randomHourlyCust();
+// paris.cookiesPerHour();
+// paris.creatingList();
+
+// //Calling Lima
+
+// lima.randomHourlyCust();
+// lima.cookiesPerHour();
+// lima.creatingList();
