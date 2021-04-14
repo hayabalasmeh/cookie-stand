@@ -1,6 +1,6 @@
 'use strict'
 
-//Hello to my lab 7 code , the side notes are just a refrence for me when I get back later to the code as it was huge brainstorming lab 
+//Hello welcome to my lab 7 code , the side notes are just a refrence for me when I get back later to the code as it was huge brainstorming lab 
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -8,9 +8,10 @@ function getRandomIntInclusive(min, max) {
      //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 }
 
+
 let mainsection = document.getElementById("special");
-let table = document.createElement('table');
-mainsection.appendChild(table);
+let tableBuild = document.createElement('table');
+mainsection.appendChild(tableBuild);
 
 let workingHours = [' at 6am ',' at 7am ',' at 8am ',' at 9am ',' at 10am ',' at 11am ',' at 12pm ',' at 1pm ',' at 2pm ',' at 3pm ',' at 4pm ', ' at 5pm ', ' at 6pm ', ' at 7pm '];
 
@@ -74,7 +75,7 @@ for(let i=0; i< arrofObjects.length; i++){
 //adding table headings
 function tableHead (){
     let tableRow1 = document.createElement('tr');
-    table.appendChild(tableRow1);
+    tableBuild.appendChild(tableRow1);
     let tableHeadEmp= document.createElement('th');
     tableRow1.appendChild(tableHeadEmp);
     tableHeadEmp.textContent = ' ';
@@ -94,7 +95,7 @@ tableHead();
 Location.prototype.creatingTable = function(){
     let totalLocat = 0;
     let tableRow2= document.createElement('tr');
-    table.appendChild(tableRow2);
+    tableBuild.appendChild(tableRow2);
     let tableRowMain = document.createElement('td')
     tableRow2.appendChild(tableRowMain);
     tableRowMain.textContent= `${this.locationName} `;   
@@ -123,7 +124,7 @@ function tableFooter(){
     let oneHourTotal = 0;// outside the first for loop in order to use it inside both for loop
     let allHourTotl = 0;
     let tableFootRow = document.createElement('tr');
-    table.appendChild(tableFootRow);
+    tableBuild.appendChild(tableFootRow);
     let tableHeadSum= document.createElement('td');
     tableFootRow.appendChild(tableHeadSum);
     tableHeadSum.textContent = ' Totals ';
@@ -144,8 +145,41 @@ let tableLastCell = document.createElement('td');
 tableFootRow.appendChild(tableLastCell);
 tableLastCell.textContent = allHourTotl;
 }
-tableFooter(); 
+tableFooter();
 
+
+//adding form for user own creation of shop
+
+
+const form = document.getElementById('report');
+form.addEventListener('submit',creatingShop);
+//form.insertBefore('special',);
+
+
+
+
+function creatingShop(event){
+    event.preventDefault();
+    let shopName = event.target.f1.value;
+    console.log(shopName);
+    let minValue = parseInt(event.target.f2.value);
+    let maxValue = parseInt(event.target.f3.value);
+    let avergeValue = parseFloat(event.target.f4.value);
+    let newShop = new Location (shopName,minValue,maxValue,avergeValue);
+    let table = document.querySelector('table');
+    table.deleteRow(6);
+    newShop.randomHourlyCust();
+    newShop.cookiesPerHour();
+    newShop.creatingTable();
+    //My REF https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement/deleteRow
+    //arrofObjects.push(newShop);
+    tableFooter();
+    
+    
+    console.log(newShop);
+}
+
+ 
 //console.log(tablefooter);
 
 
