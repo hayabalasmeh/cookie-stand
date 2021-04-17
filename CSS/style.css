@@ -10,11 +10,11 @@ body {
     background-repeat:no-repeat;
     background-size:cover;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  ;
+  min-width:100%;
+  min-height:100%;
    padding: 100px;
-    height:100%;
     padding-top: 200px;
-    padding-right: 300px;
+    padding-right: 200px;
    padding-left: 100px;
    margin-top: 0%;
    margin-right: 0%;
@@ -23,6 +23,15 @@ body {
 
 header{
     margin-bottom: 100px;
+}
+#order{
+    position: fixed;
+    width: 8%;
+    padding-right: 0%;
+    right: 5%;
+    padding-top: 0px;
+    margin-top: 20%;
+    top: 0%;
 }
 .img2{
     position: fixed;
@@ -37,7 +46,7 @@ header{
 header ul {
 margin:40px;
 position: relative;
-background-color: rgb(151, 107, 109);
+background-color: rgb(150, 130, 131);
 opacity: 60%;
 }
 .logo{
@@ -67,7 +76,7 @@ li:hover{
 
  ul li a {
 text-decoration: none;
-color:brown;
+color:rgb(129, 27, 58);
 font-weight:bolder;
 font-size: 20px;
 font-family:fantasy;
@@ -75,11 +84,6 @@ padding-bottom: 0px;
 margin-top: 100px;
 
 }
-
-button {
-    text-shadow: darkgray;
-}
-
 
 
 .img1 {
@@ -115,9 +119,36 @@ padding: 0%;
 #right-col img {
 max-width:70% ;
 }
+.spec{
+    position: absolute;
+    max-width: 20%;
+}
 
-
-
+main article{
+    width:80%;
+    background-image: url('../images/back.jpg');
+    background-size: 800px;
+    
+     
+     min-height: 300px;
+     margin: 30px;
+}
+main h3{
+    text-align:left;
+    padding-left: 40px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding-top: 20px;
+}
+main p {
+    font-style: italic;
+    text-align: left;
+  
+    padding-top: 20px;
+    padding-left: 30px;
+   font-family:cursive;
+    font-weight:bolder;
+    color: black;
+}
 
 #special{
     
@@ -147,6 +178,7 @@ right: 50px;
         white-space:nowrap;
     
 }
+
 form{
     background-color: blanchedalmond;
     opacity: 40%;
@@ -156,7 +188,7 @@ input{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: coral;
     border-radius:70% ;
-    padding: 5px 5px 5px 30px;
+    padding: 5px 5px 5px 10px;
   
     font-weight: bolder;
 }
@@ -165,7 +197,7 @@ legend {
     font-size: 25px;
     font-weight: bolder;
     text-align: left;
-    color: coral
+    color: rgb(160, 93, 69)
 }
 
 label{
@@ -178,15 +210,16 @@ form fieldset{
 }
 button{
     border-radius: 60%;
-    font-family: fantasy;
+    font-family:cursive;
     background-color: brown;
 }
 button:hover{
     background-color: rgb(88, 37, 37);
 }
-#submit:hover{
-    color: brown;
+input:hover{
+    color: rgb(212, 182, 182);
     padding: 5px 5px 5px 3px;
+    background-color: rgb(70, 31, 31);
     
     
 }
