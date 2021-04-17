@@ -179,6 +179,7 @@ function creatingShop(event){
     console.log(newShop);
 }
 
+
  
 //console.log(tablefooter);
 
