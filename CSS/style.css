@@ -8,6 +8,7 @@
 body {
     background-image: url('../images/back.jpg');
     background-repeat:no-repeat;
+    background-attachment: fixed;
     background-size:cover;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   min-width:100%;
@@ -27,18 +28,20 @@ header{
     position: fixed;
     width: 8%;
     padding-right: 0%;
-    right: 5%;
+    right: 9%;
     padding-top: 0px;
-    margin-top: 20%;
+    margin-top: 22%;
     top: 0%;
     z-index: top;
+    background-image: url('../images/Food\ Market\ app\ loader\ \(1\).gif');
+    background-size: cover;
 }
 
 .img2{
     position: fixed;
     width: 300px;
     height: 300px;
-    padding-right: 0%;
+    padding-right: 2%;
     right: 0%;
     padding-top: 0px;
     margin-top: 0%;
